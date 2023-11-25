@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  @apply bg-slate-900 w-full h-full overflow-x-hidden
+}
+
+.active {
+  @apply text-red-500
+}
+
+.bread-crumb:not(:last-child)::after {
+  content: ' | ';
+}
+
+.bread-crumb:last-child::after {
+  content: '';
+}

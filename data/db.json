@@ -36,5 +36,22 @@
       "content": "Hi Mom",
       "id": 6
     }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "email": "mario@gmail.com",
+      "password": "mario"
+    },
+    {
+      "id": "2",
+      "email": "linlin@gmail.com",
+      "password": "linlin"
+    },
+    {
+      "id": "3",
+      "email": "johndoe@gmail.com",
+      "password": "johndoe"
+    }
   ]
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUser } from "../context/UserProvider";
 
@@ -11,6 +11,14 @@ const Register = () => {
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    const user = localStorage.getItem("loginUser") || null;
+    if (loginUser || user) {
+      navigate("/");
+      return;
+    }
+  }, []);
 
   const handleChange = (event) => {
     const { id, value } = event.target;

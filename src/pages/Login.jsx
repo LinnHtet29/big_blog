@@ -11,7 +11,8 @@ const Login = () => {
   });
 
   useEffect(() => {
-    if (loginUser) {
+    const user = localStorage.getItem("loginUser") || null;
+    if (loginUser || user) {
       navigate("/");
       return;
     }

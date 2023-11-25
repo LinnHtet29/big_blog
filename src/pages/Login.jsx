@@ -44,6 +44,7 @@ const Login = () => {
       password: formData.password,
     };
     setLoginUser(user);
+    localStorage.setItem("loginUser", JSON.stringify(user));
     navigate("/");
   };
 

@@ -1,7 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
-  console.log("login");
   return (
     <div className="h-screen ">
       <div className="text-white mt-6 mx-auto h-[90%] w-[50%] my-auto bg-gray-800 p-10 rounded-xl flex flex-col gap-12 items-center">
@@ -30,6 +30,13 @@ const Login = () => {
           className="mt-14 bg-red-700 w-36 rounded-lg p-3 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
           value={"Login"}
         />
+
+        <Link
+          to={"/register"}
+          className="text-sm border-b border-white hover:border-blue-400 hover:-translate-y-1 duration-300 transition-all hover:text-blue-400"
+        >
+          No Account? Sign up here
+        </Link>
       </div>
     </div>
   );

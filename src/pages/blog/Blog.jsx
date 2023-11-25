@@ -14,7 +14,7 @@ export default function Career() {
 }
 
 export const blogsLoader = async () => {
-  const res = await fetch("http://localhost:8000/blogs");
+  const res = await fetch("http://localhost:3000/blogs");
   if (!res.ok) {
     throw Error("Cannot make the request.");
   }

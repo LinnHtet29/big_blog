@@ -1,12 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useUser } from "../context/UserProvider";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [loginUser, setLoginUser] = useUser();
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    if (loginUser) {
+      navigate("/");
+      return;
+    }
+  }, []);
 
   const [isLoginFail, setIsLoginFail] = useState(false);
 
@@ -30,6 +39,11 @@ const Login = () => {
       return;
     }
     setIsLoginFail(false);
+    const user = {
+      email: formData.email,
+      password: formData.password,
+    };
+    setLoginUser(user);
     navigate("/");
   };
 

@@ -17,30 +17,54 @@ import Nav from "./layout/Nav";
 import Help from "./layout/Help";
 import BlogLayout from "./layout/BlogLayout";
 import Login from "./pages/Login";
-import LoginRegisterLayout from "./layout/LoginRegisterLayout";
+import Register from "./pages/Register";
 
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Nav />}>
-      <Route path="/" element={<BlogLayout />} errorElement={<BlogError />}>
-        <Route index loader={blogsLoader} element={<Blog />} />
-        <Route path="/:id" loader={blogDetailLoader} element={<Detail />} />
-      </Route>
-      <Route path="about" element={<About />} />
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Nav />,
+    errorElement: <BlogError />,
+    children: [
+      {
+        path: "/",
+        element: <BlogLayout />,
+        errorElement: <BlogError />,
+        children: [
+          {
+            path: "/",
+            element: <Blog />,
+            loader: blogsLoader,
+          },
+          {
+            path: "/:id",
+            element: <Detail />,
+            loader: blogDetailLoader,
+          },
+          { path: "/about", element: <About /> },
+        ],
+      },
+    ],
+  },
+  {
+    path: "/help",
+    element: <Help />,
+    children: [
+      { path: "/help/faq", element: <Faq /> },
+      { path: "/help/contact", element: <Contact />, action: contactAction },
+    ],
+  },
 
-      <Route path="/login" element={LoginRegisterLayout}>
-        <Route path="/login" element={<Login />} />
-      </Route>
+  {
+    path: "/login",
+    element: <Login />,
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
 
-      <Route path="help" element={<Help />}>
-        <Route path="faq" element={<Faq />} />
-        <Route path="contact" element={<Contact />} action={contactAction} />
-      </Route>
-
-      <Route path="*" element={<NotFound />} />
-    </Route>
-  )
-);
+  { path: "*", element: <NotFound /> },
+]);
 
 function App() {
   return <RouterProvider router={router} />;

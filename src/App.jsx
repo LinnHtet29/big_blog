@@ -5,6 +5,7 @@ import Faq from "./pages/help/Faq"
 import Contact, { contactAction } from "./pages/help/Contact"
 import NotFound from "./pages/NotFound"
 import Blog, { blogsLoader} from "./pages/blog/Blog"
+import AddBlog from "./pages/blog/AddBlog"
 import Detail, { blogDetailLoader } from "./pages/blog/Detail"
 import BlogError from "./pages/blog/BlogError"
 
@@ -19,6 +20,7 @@ const router = createBrowserRouter(
       <Route path="/" element={<BlogLayout/>} errorElement={<BlogError/>}>
         <Route index loader={blogsLoader} element={<Blog />} />
         <Route path=":id" loader={blogDetailLoader} element={<Detail/> }/>
+        <Route path="/create-blog" element={<AddBlog/>}></Route>
       </Route>
       <Route path="about" element={<About />} />
       
@@ -26,7 +28,6 @@ const router = createBrowserRouter(
         <Route path="faq" element={<Faq/>} />
         <Route path="contact" element={<Contact/>} action={contactAction}/>
       </Route>
-
 
       <Route path="*" element={<NotFound/>} />
     </Route>

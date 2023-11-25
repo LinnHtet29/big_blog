@@ -1,9 +1,16 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import BreadCrumb from "../components/BreadCrumb";
+
 import { useUser } from "../context/UserProvider";
 
 export default function Nav() {
   const [loginUser, setLoginUser] = useUser();
+  const navigate = useNavigate();
+  const logout = () => {
+    setLoginUser(null);
+    localStorage.removeItem("loginUser");
+    navigate("/");
+  };
 
   return (
     <div>
@@ -21,6 +28,9 @@ export default function Nav() {
                 <NavLink to="/">Home</NavLink>
                 <NavLink to="/about">About</NavLink>
                 <NavLink to="/help">Help</NavLink>
+                <button className="text-yellow-500" onClick={logout}>
+                  Logout
+                </button>
               </>
             ) : (
               <>

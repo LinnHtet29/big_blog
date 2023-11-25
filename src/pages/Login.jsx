@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
-  console.log("login");
   return (
     <div className="h-screen ">
       <div className="text-white mt-6 mx-auto h-[90%] w-[50%] my-auto bg-gray-800 p-10 rounded-xl flex flex-col gap-12 items-center">

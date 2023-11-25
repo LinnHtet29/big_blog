@@ -41,21 +41,25 @@ const router = createBrowserRouter([
             element: <Detail />,
             loader: blogDetailLoader,
           },
-  {
+          {
             path: "/create-blog",
-            element: <AddBlog/>,
+            element: <AddBlog />,
           },
           { path: "/about", element: <About /> },
+          {
+            path: "/help",
+            element: <Help />,
+            children: [
+              { path: "/help/faq", element: <Faq /> },
+              {
+                path: "/help/contact",
+                element: <Contact />,
+                action: contactAction,
+              },
+            ],
+          },
         ],
       },
-    ],
-  },
-  {
-    path: "/help",
-    element: <Help />,
-    children: [
-      { path: "/help/faq", element: <Faq /> },
-      { path: "/help/contact", element: <Contact />, action: contactAction },
     ],
   },
 

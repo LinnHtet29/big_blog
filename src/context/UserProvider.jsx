@@ -9,12 +9,12 @@ export const useUser = () => {
 const UserProvider = ({ children }) => {
   const [loginUser, setLoginUser] = useState(null);
 
-  const user = localStorage.getItem("loginUser") || {};
   useEffect(() => {
+    const user = localStorage.getItem("loginUser") || null;
     if (user) {
       setLoginUser(JSON.parse(user));
     }
-  }, [loginUser]);
+  }, []);
 
   return (
     <UserContext.Provider value={[loginUser, setLoginUser]}>

@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Card from "../../components/Card";
 
-export default function Career() {
+export default function Blog() {
   const blogs = useLoaderData();
 
   return (

@@ -23,11 +23,11 @@ export default function Nav() {
             Big Blog
           </Link>
           <div className="w-4/12 px-3 inline-flex gap-5 justify-center items-center text-white text-lg font-semibold">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/about">About</NavLink>
+            <NavLink to="/help">Help</NavLink>{" "}
             {loginUser ? (
               <>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/about">About</NavLink>
-                <NavLink to="/help">Help</NavLink>
                 <button className="text-yellow-500" onClick={logout}>
                   Logout
                 </button>

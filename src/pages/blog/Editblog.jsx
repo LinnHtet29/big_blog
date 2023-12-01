@@ -1,22 +1,39 @@
-import React from "react";
-import { useState } from "react";
-import axios from "../axios";
+import axios from "../../axios";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 export default function BlogForm() {
   const [title, setTitle] = useState("");
   const [subTitle, setSubTitle] = useState("");
   const [content, setContent] = useState("");
   const [isPending, setIsPending] = useState(false);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(id);
+        const blogData = res.data;
+        setTitle(blogData.title);
+        setSubTitle(blogData.subTitle);
+        setContent(blogData.content);
+      } catch (error) {
+        console.error("Error fetching blog data:", error);
+      }
+    };
+    fetchData();
+  }, [id]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const blog = { title, subTitle, content };
     setIsPending(true);
     try {
-      await axios.post('/', blog, {
+      await axios.put(id, blog, {
         headers: { "Content-Type": "application/json" },
       });
-      console.log("Blog post created");
+
+      console.log("Blog post updated");
       setIsPending(false);
     } catch (error) {
       console.error("Error updating blog post:", error);
@@ -88,7 +105,7 @@ export default function BlogForm() {
               className="w-[200px] bg-[#0f172a] text-white text-md rounded-lg mr-16"
               type="submit"
             >
-              Post Blog
+              Edit Blog
             </button>
           )}
           {isPending && (

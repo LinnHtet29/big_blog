@@ -41,6 +41,7 @@ const Login = () => {
     }
     setIsLoginFail(false);
     const user = {
+      id: matchingUser.id,
       email: formData.email,
       password: formData.password,
     };

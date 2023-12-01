@@ -19,6 +19,7 @@ import Help from "./layout/Help";
 import BlogLayout from "./layout/BlogLayout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import EditBlog from "./pages/blog/Editblog";
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,10 @@ const router = createBrowserRouter([
           {
             path: "/create-blog",
             element: <AddBlog />,
+          },
+          {
+            path: "/edit-blog/:id",
+            element: <EditBlog/>,
           },
           { path: "/about", element: <About /> },
           {

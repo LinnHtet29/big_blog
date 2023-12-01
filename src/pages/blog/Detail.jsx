@@ -11,7 +11,7 @@ export default function Detail() {
   const [users, setUsers] = useState([]);
   const [comment, setComment] = useState({
     blogId: id,
-    userId: "",
+    userId: "userId",
     content: "",
   });
 
@@ -58,6 +58,7 @@ export default function Detail() {
     setComment({
       ...comment,
       [event.target.name]: event.target.value,
+      "userId" : loginUser.id
     });
   };
 
@@ -110,8 +111,6 @@ export default function Detail() {
               onChange={handleChange}
               className="tracking-wider px-3 rounded-lg w-full py-2 bg-transparent border border-white focus:outline-none focus:border-[#4d4d4d]"
             />
-            <input type="hidden" name="userId" onChange={handleChange} />
-
             <button type="submit" className="absolute top-6 right-12 p-1">
               <i className="fa-regular fa-paper-plane text-[20px]"></i>
             </button>

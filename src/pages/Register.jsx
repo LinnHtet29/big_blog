@@ -52,9 +52,9 @@ const Register = () => {
         if (response.ok) {
           setIsError(false);
           setIsEmailDuplicate(false);
-          setLoginUser(newUser);
-          localStorage.setItem("loginUser", JSON.stringify(newUser));
-          navigate("/");
+         // setLoginUser(newUser);
+         // localStorage.setItem("loginUser", JSON.stringify(newUser));
+          navigate("/login");
         } else {
           setIsError(true);
         }

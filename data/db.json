@@ -58,6 +58,25 @@
       "id": "3",
       "email": "johndoe@gmail.com",
       "password": "johndoe"
+    },
+    {
+      "email": "yy@gmail.com",
+      "password": "123456789",
+      "id": "eC3Jx_E"
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "blogId": "1",
+      "userId": "1",
+      "content": "This is a comment"
+    },
+    {
+      "id": "2",
+      "blogId": "1",
+      "userId": "2",
+      "content": "This is another comment"
     }
   ]
 }

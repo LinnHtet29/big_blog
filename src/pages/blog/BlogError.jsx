@@ -1,6 +1,6 @@
 import { Link, useRouteError } from "react-router-dom"
 
-export default function CareerError() {
+export default function BlogError() {
 
     const error = useRouteError();
 

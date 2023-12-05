@@ -1,43 +1,12 @@
-import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider} from "react-router-dom"
-import Home from './pages/Home'
-import About from './pages/About'
-import Faq from "./pages/help/Faq"
-import Contact, { contactAction } from "./pages/help/Contact"
-import NotFound from "./pages/NotFound"
-import Blog, { blogsLoader} from "./pages/blog/Blog"
-import Detail, { blogDetailLoader } from "./pages/blog/Detail"
-import BlogError from "./pages/blog/BlogError"
+import React from "react";
+import Router from "@/routes/Router";
 
-import Nav from "./layout/Nav"
-import Help from "./layout/Help"
-import BlogLayout from "./layout/BlogLayout"
-
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path="/" element={<Nav/>}>
-      {/* <Route index element={<Home/>}/> */}
-      <Route path="/" element={<BlogLayout/>} errorElement={<BlogError/>}>
-        <Route index loader={blogsLoader} element={<Blog />} />
-        <Route path=":id" loader={blogDetailLoader} element={<Detail/> }/>
-      </Route>
-      <Route path="about" element={<About />} />
-      
-      <Route path="help" element={<Help/>}>
-        <Route path="faq" element={<Faq/>} />
-        <Route path="contact" element={<Contact/>} action={contactAction}/>
-      </Route>
-
-
-      <Route path="*" element={<NotFound/>} />
-    </Route>
-  )
-)
-
-function App() {
-
+const App = () => {
   return (
-    <RouterProvider router={router}/>
-  )
-}
+    <>
+      <Router />
+    </>
+  );
+};
 
-export default App
+export default App;
